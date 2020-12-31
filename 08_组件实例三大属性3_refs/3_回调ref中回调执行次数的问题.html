@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>3_回调ref中回调执行次数的问题</title>
 </head>
 
 <body>
@@ -23,7 +23,15 @@
     <script type="text/babel">
         //创建组件
         class Demo extends React.Component {
-
+            render() {
+                return (
+                    <div>
+                        <input ref="{(currentNode)={this.input1 = currentNode;console.log('@',currentNode);}}" type="text" />
+                        <button onClick={this.showInfo}>点我提示输入的数据</button>
+                        <button onClick={this.changeWeather}>点我切换天气</button>
+                    </div>
+                )
+            }
         }
         //渲染组件到页面
         ReactDOM.render(<Demo />, document.getElementById('test'))
